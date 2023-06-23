@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,7 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_finance"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.categorias.FormCategory"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ingresos.FormIngresos"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gastos.FormGastos"
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -23,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -37,7 +46,6 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.My_finance.NoActionBar" />
-
     </application>
 
 </manifest>

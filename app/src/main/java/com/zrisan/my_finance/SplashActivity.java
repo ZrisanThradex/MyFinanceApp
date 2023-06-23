@@ -39,7 +39,8 @@ public class SplashActivity extends AppCompatActivity {
 
     private boolean isUserLoggedIn() {
         SharedPreferences sharedPreferences = getSharedPreferences("Auth", MODE_PRIVATE);
-        return sharedPreferences.getBoolean("isLoggedIn", false);
+        String token = sharedPreferences.getString("token", null);
+        return token != null && !token.isEmpty();
     }
 }
 

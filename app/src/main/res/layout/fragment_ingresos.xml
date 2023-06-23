@@ -1,80 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@+id/swipe_refresh_layout_Ingreso"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.gastos.GastosFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Título "Agregar Gasto" -->
-    <TextView
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agregar Ingreso"
-        android:textStyle="bold"
-        android:textSize="22sp"
-        android:padding="16dp"/>
+        android:layout_height="match_parent"
+        >
 
-    <!-- EditText para el título -->
-    <EditText
-        android:id="@+id/editTextTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Título"/>
-
-    <!-- LinearLayout horizontal para el monto y la fecha -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- EditText para el monto -->
-        <EditText
-            android:id="@+id/editTextAmount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="numberDecimal"
-            android:hint="Monto"/>
-
-        <!-- EditText para la fecha -->
-        <EditText
-            android:id="@+id/editTextDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Fecha"
-            android:focusable="false"/>
-    </LinearLayout>
-
-    <!-- LinearLayout horizontal para el texto de categoría y el botón de categoría -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- TextView para mostrar la categoría seleccionada -->
+        <!-- Selector de cuentas -->
         <TextView
-            android:id="@+id/textViewCategory"
-            android:layout_width="0dp"
+            android:id="@+id/textAccount"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Categoria"
-            android:textColor="@android:color/black"/>
+            android:textSize="20dp"
+            android:layout_marginLeft="5dp"
+            android:text="Cuentas"/>
 
-        <!-- Botón para seleccionar categoría -->
-        <Button
-            android:id="@+id/buttonCategory"
+        <Spinner
+            android:id="@+id/account_spinner"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginTop="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textAccount" />
+
+        <TextView
+            android:id="@+id/listGasto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/account_spinner"
+            android:text="Gastos de la cuenta"/>
+
+        <!-- Lista de gastos -->
+        <ListView
+            android:id="@+id/transactionListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/listGasto" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_income_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Seleccionar Categoría"/>
-    </LinearLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add"
+            android:contentDescription="@string/add_expense_button_description" />
 
-    <!-- Botón de Guardar -->
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Guardar"/>
-</LinearLayout>
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

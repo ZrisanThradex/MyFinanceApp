@@ -14,19 +14,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.zrisan.my_finance.helpers.DatabaseHelper;
+import com.zrisan.my_finance.api.APIClient;
+import com.zrisan.my_finance.api.APIService;
+import com.zrisan.my_finance.models.AuthToken;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class RegisterActivity extends AppCompatActivity {
-    private DatabaseHelper databaseHelper = new DatabaseHelper(this);
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button registerButton;
+    private APIService apiService;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // Obtener referencias a las vistas
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);
         registerButton = findViewById(R.id.registroButton);
@@ -41,43 +50,45 @@ public class RegisterActivity extends AppCompatActivity {
                 LoadingDialogFragment loadingDialog = new LoadingDialogFragment();
                 loadingDialog.show(getSupportFragmentManager(), "loading_dialog");
 
-                // Guardar el usuario en la base de datos en un hilo de fondo
-                new Thread(new Runnable() {
+                SharedPreferences sharedPreferences = getSharedPreferences("Auth", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                apiService = APIClient.getApiService(null);
+
+                // Realizar la llamada a la API en un hilo de trabajo separado
+                Call<AuthToken> call = apiService.register(username, password);
+                call.enqueue(new Callback<AuthToken>() {
                     @Override
-                    public void run() {
-                        // Aquí puedes realizar la operación de guardar en la base de datos
-                        // Por ejemplo, llamar al método insertUser() de DatabaseHelper
-                        if(!databaseHelper.isTableExists()){
-                            Log.v("LOGEO","NO SE HA REGISTRADO");
-                        }else{
-                            databaseHelper.insertUser(username, password);
-                            //Guardando preferencias
-                            SharedPreferences sharedPreferences = getSharedPreferences("Auth", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            //editor.putString("username", username);
-                            //editor.putString("password", password);
-                            editor.putBoolean("isLoggedIn", true);
+                    public void onResponse(Call<AuthToken> call, Response<AuthToken> response) {
+                        // Ocultar el diálogo de carga
+                        loadingDialog.dismiss();
+
+                        if (response.isSuccessful()) {
+                            // Registro exitoso, realizar acciones adicionales si es necesario
+                            AuthToken authToken = response.body();
+                            String token = authToken.getToken().getToken();
+                            // Procesar la respuesta del usuario
+                            editor.putString("token", token);
                             editor.apply();
 
-                            // Ocultar el diálogo de carga en el hilo principal
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    // Ocultar el diálogo de carga
-                                    loadingDialog.dismiss();
-
-                                    // Mostrar mensaje de éxito
-                                    Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-
-                                    // Continuar con la lógica de tu aplicación o iniciar una nueva actividad
-                                    Intent principal = new Intent(RegisterActivity.this, MainActivity.class);
-                                    startActivity(principal);
-                                }
-                            });
+                            // Continuar con la lógica de tu aplicación o iniciar una nueva actividad
+                            Intent principal = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(principal);
+                            Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                             // Finalizar la actividad de registro y regresar a la actividad anterior
+                        } else {
+                            // Manejar error de respuesta
+                            Toast.makeText(RegisterActivity.this, "Error en el registro", Toast.LENGTH_SHORT).show();
                         }
-
                     }
-                }).start();
+
+                    @Override
+                    public void onFailure(Call<AuthToken> call, Throwable t) {
+                        // Ocultar el diálogo de carga
+                        loadingDialog.dismiss();
+                        Toast.makeText(RegisterActivity.this, "Error en la conexión", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }

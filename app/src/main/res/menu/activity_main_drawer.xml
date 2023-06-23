@@ -10,7 +10,7 @@
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_gastos"
-            android:icon="@drawable/baseline_trending_down_24"
+            android:icon="@drawable/ic_down_24"
             android:title="@string/menu_gastos" />
         <item
             android:id="@+id/nav_ingresos"

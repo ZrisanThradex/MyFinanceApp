@@ -1,32 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@+id/swipe_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.categorias.CategoriasFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Título "Agregar Categoría" -->
-    <TextView
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agregar Categoría"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:padding="16dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-    <!-- EditText para el nombre de la categoría -->
-    <EditText
-        android:id="@+id/editTextNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre de la categoría"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <!-- TextView para la categoría de gastos -->
+            <TextView
+                android:id="@+id/categoryExpenseTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoría de Gastos"
+                android:textStyle="bold"
+                android:padding="8dp" />
 
-    <!-- Botón de Guardar -->
-    <Button
-        android:id="@+id/buttonGuardar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Guardar"/>
-</LinearLayout>
+            <!-- Lista de gastos -->
+            <ListView
+                android:id="@+id/categoryExpenseListView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingVertical="8dp" />
+
+            <!-- TextView para la categoría de ingresos -->
+            <TextView
+                android:id="@+id/categoryIncomeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoría de Ingresos"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <!-- Lista de ingresos -->
+            <ListView
+                android:id="@+id/categoryIncomeListView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingVertical="8dp" />
+        </LinearLayout>
+
+        <!-- Botón de agregar categoría de ingresos (derecha) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_category_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:background="@color/green"
+            android:src="@drawable/ic_add"
+            android:contentDescription="@string/add_category_button_description" />
+
+
+
+    </RelativeLayout>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
