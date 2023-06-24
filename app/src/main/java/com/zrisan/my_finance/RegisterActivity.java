@@ -66,16 +66,11 @@ public class RegisterActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             // Registro exitoso, realizar acciones adicionales si es necesario
                             AuthToken authToken = response.body();
-                            String token = authToken.getToken().getToken();
-                            // Procesar la respuesta del usuario
-                            editor.putString("token", token);
-                            editor.apply();
 
                             // Continuar con la lógica de tu aplicación o iniciar una nueva actividad
-                            Intent principal = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(principal);
+                            Intent login = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(login);
                             Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                             // Finalizar la actividad de registro y regresar a la actividad anterior
                         } else {
                             // Manejar error de respuesta
                             Toast.makeText(RegisterActivity.this, "Error en el registro", Toast.LENGTH_SHORT).show();
