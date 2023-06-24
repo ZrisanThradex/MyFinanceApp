@@ -29,6 +29,7 @@
     <string name="menu_gastos">Gastos</string>
     <string name="menu_ingresos">Ingresos</string>
     <string name="menu_categorias">Categorias</string>
+    <string name="menu_logout">Cerrar sesión</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_expense_button_description">Add new Expense</string>

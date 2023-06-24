@@ -21,5 +21,14 @@
             android:id="@+id/nav_categorias"
             android:icon="@drawable/baseline_category_24"
             android:title="@string/menu_categorias" />
+
+    </group>
+
+    <group android:id="@+id/group_session"
+        android:layout_gravity="bottom">
+        <item
+            android:id="@+id/nav_salir"
+            android:icon="@drawable/ic_power"
+            android:title="@string/menu_logout" />
     </group>
 </menu>

@@ -1,8 +1,11 @@
 package com.zrisan.my_finance;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -12,9 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.zrisan.my_finance.databinding.ActivityMainBinding;
-import com.zrisan.my_finance.ui.categorias.CategoriasFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +44,26 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        //Funcinoalidad para cerrar session
+        Menu menu = navigationView.getMenu();
+        MenuItem bottomItem = menu.findItem(R.id.nav_salir);
+        bottomItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
+            @Override
+            public boolean onMenuItemClick(MenuItem item){
+                SharedPreferences preferences = getSharedPreferences("Auth", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+
+
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+
+                return true;
+            }
+        });
     }
 
     @Override
