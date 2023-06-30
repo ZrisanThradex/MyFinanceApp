@@ -6,7 +6,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class AuthInterceptor implements Interceptor {
-
     private String token;
 
     public AuthInterceptor(String token) {
@@ -17,8 +16,8 @@ public class AuthInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request originalRequest = chain.request();
 
-        Request.Builder requestBuilder = originalRequest.newBuilder()
-                .header("Authorization", "Bearer " + token);
+        Request.Builder requestBuilder = originalRequest.newBuilder();
+        requestBuilder.header("Authorization", "Bearer " + token);
 
         Request request = requestBuilder.build();
         return chain.proceed(request);

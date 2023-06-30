@@ -45,12 +45,6 @@ public class CategoriasFragment extends Fragment {
     private FragmentCategoriasBinding binding;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-  // Define la interfaz de escucha
-  public void actualizarCategorias() {
-      // Realiza la llamada a la API y actualiza los datos de las categorías
-      obtenerCategorias();
-  }
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         CategoriasViewModel categoriasViewModel =

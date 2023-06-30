@@ -4,6 +4,8 @@ import com.zrisan.my_finance.models.Account;
 import com.zrisan.my_finance.models.AuthToken;
 import com.zrisan.my_finance.models.Category;
 import com.zrisan.my_finance.models.LoginRequest;
+import com.zrisan.my_finance.models.Message;
+import com.zrisan.my_finance.models.NewAccount;
 import com.zrisan.my_finance.models.RegistrationRequest;
 import com.zrisan.my_finance.models.Transaction;
 import com.zrisan.my_finance.models.User;
@@ -31,7 +33,7 @@ public interface APIService {
     Call<AuthToken> login(@Field("username") String username, @Field("password") String password);
     @FormUrlEncoded
     @POST("auth/register")
-    Call<AuthToken> register(@Field("username") String username, @Field("password") String password);
+    Call<Message> register(@Field("username") String username, @Field("password") String password);
 
     @POST("auth/logout")
     Call<Void> logout();
@@ -40,6 +42,10 @@ public interface APIService {
     //Expenses
     @GET("account")
     Call<List<Account>> obtenerCuentas();
+
+    @FormUrlEncoded
+    @POST("account")
+    Call<NewAccount> saveAccount(@Field("name") String name, @Field("balance") Double balance);
 
     @GET("transaction/{accountId}/{typeTrs}")
     Call<List<Transaction>> obtenerTransaccionesCuenta(@Path("accountId") int accountId, @Path("typeTrs") String typeTrs);

@@ -29,5 +29,11 @@
         android:label="@string/menu_categorias"
         tools:layout="@layout/fragment_categorias" />
 
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.zrisan.my_finance.ui.account.FragmentAccount"
+        android:label="@string/menu_account"
+        tools:layout="@layout/fragment_account" />
+
 
 </navigation>

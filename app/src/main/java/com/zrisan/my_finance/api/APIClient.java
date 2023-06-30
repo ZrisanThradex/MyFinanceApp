@@ -9,19 +9,21 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class APIClient {
     private static final String BASE_URL = "https://backend-app-money-production.up.railway.app/api/v1/";
     private static APIService apiService;
+    private static OkHttpClient client;
 
     public static APIService getApiService(@Nullable Context context) {
         if (apiService == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(JacksonConverterFactory.create())
-                    .client(getOkHttpClient(context))  // Agrega el OkHttpClient con el interceptor
+                    .client(getOkHttpClient(context))
                     .build();
 
             apiService = retrofit.create(APIService.class);
@@ -32,14 +34,17 @@ public class APIClient {
     private static OkHttpClient getOkHttpClient(@Nullable Context context) {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
 
-        if (context != null) {
-            String token = getTokenFromPreferences(context);  // Obtiene el token de tus preferencias
+        httpClientBuilder.addInterceptor(chain -> {
+            Request originalRequest = chain.request();
 
-            // Crea el interceptor con el token
-            AuthInterceptor authInterceptor = new AuthInterceptor(token);
+            String token = getTokenFromPreferences(context);  // Obtiene el token actualizado de las preferencias
 
-            httpClientBuilder.addInterceptor(authInterceptor);  // Agrega el interceptor al cliente
-        }
+            Request.Builder requestBuilder = originalRequest.newBuilder()
+                    .header("Authorization", "Bearer " + token);
+
+            Request request = requestBuilder.build();
+            return chain.proceed(request);
+        });
 
         return httpClientBuilder.build();
     }

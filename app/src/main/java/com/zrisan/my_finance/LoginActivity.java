@@ -29,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private APIService apiService;
 
+    private Context context;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
+        context = getBaseContext();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 LoadingDialogFragment loadingDialog = new LoadingDialogFragment();
                 loadingDialog.show(getSupportFragmentManager(), "loading_dialog");
 
-                SharedPreferences sharedPreferences = getSharedPreferences("Auth", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+
 
                 apiService = APIClient.getApiService(null);
 
@@ -67,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
                             AuthToken authToken = response.body();
                             String token = authToken.getToken().getToken();
                             // Procesar la respuesta del usuario
+                            SharedPreferences preferences = context.getSharedPreferences("Auth", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("token", token);
                             editor.apply();
                             // Credenciales válidas, realizar acciones adicionales

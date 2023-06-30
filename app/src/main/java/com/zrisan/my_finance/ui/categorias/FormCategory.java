@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -55,7 +56,7 @@ public class FormCategory extends AppCompatActivity  {
         spinnerTipo = findViewById(R.id.spinner_tipo);
         buttonGuardar = findViewById(R.id.button_guardar);
         categoriasFragment = new CategoriasFragment();
-        apiService = APIClient.getApiService(this);
+        apiService = APIClient.getApiService(FormCategory.this);
 
         List<String> items = new ArrayList<>();
         items.add("- Seleccione un tipo -");
@@ -108,8 +109,10 @@ public class FormCategory extends AppCompatActivity  {
                         @Override
                         public void onFailure(Call<Category> call, Throwable t) {
                             // Manejar el error en caso de fallo en la solicitud
+
                             t.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Error en la solicitud", Toast.LENGTH_SHORT).show();
+
                         }
                     });
                 } else if (selectedItem.equals("GASTO")) {

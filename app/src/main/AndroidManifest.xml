@@ -15,6 +15,9 @@
         android:theme="@style/Theme.My_finance"
         tools:targetApi="31">
         <activity
+            android:name=".ui.account.FormAccount"
+            android:exported="false" />
+        <activity
             android:name=".ui.categorias.FormCategory"
             android:exported="false" />
         <activity
