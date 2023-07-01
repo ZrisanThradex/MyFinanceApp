@@ -8,7 +8,7 @@
     android:paddingHorizontal="10dp"
     tools:context=".ui.gastos.FormGastos">
 
-    <!-- LinearLayout horizontal para el texto de categoría y el botón de categoría -->
+    <!-- LinearLayout para el texto de categoría y el botón de categoría -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Selecione una cuenta"
+            android:hint="Seleccione una cuenta"
             android:textColor="@android:color/white"/>
 
         <TextView
@@ -34,7 +34,10 @@
             android:id="@+id/buttonAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cuentas"/>
+            android:text="Cuentas"
+            android:drawableLeft="@drawable/ic_card"
+            android:drawableTint="@color/white"
+            />
     </LinearLayout>
 
     <!-- EditText para el título -->
@@ -44,11 +47,12 @@
         android:layout_height="wrap_content"
         android:hint="Título"/>
 
-    <!-- LinearLayout horizontal para el monto y la fecha -->
+    <!-- LinearLayout para el monto y la fecha -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
         <!-- EditText para el monto -->
         <EditText
@@ -69,11 +73,12 @@
             android:focusable="false"/>
     </LinearLayout>
 
-    <!-- LinearLayout horizontal para el texto de categoría y el botón de categoría -->
+    <!-- LinearLayout para el texto de categoría y el botón de categoría -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
         <!-- TextView para mostrar la categoría seleccionada -->
         <TextView
@@ -81,7 +86,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Seleccione una categoria"
+            android:hint="Seleccione una categoría"
             android:textColor="@android:color/white"/>
 
         <TextView
@@ -94,10 +99,18 @@
             android:id="@+id/buttonCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Categorías"/>
+            android:text="Categorías"
+            android:drawableLeft="@drawable/baseline_category_24"
+            android:drawableTint="@color/white"/>
     </LinearLayout>
 
-    <!-- Botón de Guardar -->
+    <!-- Añadido espacio vacío para expandir el diseño -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Botón de Guardar en la parte inferior -->
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="match_parent"

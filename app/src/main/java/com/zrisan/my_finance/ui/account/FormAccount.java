@@ -39,7 +39,7 @@ public class FormAccount extends AppCompatActivity {
         // Configurar ActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("Agregar Gasto"); // Cambia esto con el título deseado
+            actionBar.setTitle("Agregar Cuenta"); // Cambia esto con el título deseado
             actionBar.setElevation(0); // Opcional: para eliminar la sombra debajo del ActionBar
             actionBar.setDisplayHomeAsUpEnabled(true); // Habilita el botón de navegación en la barra de acción
             actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(getApplicationContext(), R.color.jungle_green)));

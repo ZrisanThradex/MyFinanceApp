@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ui.account.FormAccount">
 
-    <!-- EditText para el nombre de la categoría -->
+    <!-- EditText para el nombre de la cuenta -->
     <EditText
         android:id="@+id/edit_text_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre de la cuenta"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="16dp"
+        android:hint="Nombre de la cuenta"
+        android:inputType="text" />
 
-    <!-- EditText para el nombre de la categoría -->
+    <!-- EditText para el saldo de la cuenta -->
     <EditText
         android:id="@+id/edit_text_balance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:hint="Saldo de la cuenta"/>
+        android:layout_below="@id/edit_text_nombre"
+        android:layout_marginBottom="16dp"
+        android:hint="Saldo de la cuenta"
+        android:inputType="numberDecimal" />
 
     <!-- Botón de Guardar -->
     <Button
         android:id="@+id/button_guardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Guardar"
-        android:layout_marginTop="16dp"/>
+        android:layout_alignParentBottom="true"
+        android:text="Guardar" />
 
-</LinearLayout>
+</RelativeLayout>
