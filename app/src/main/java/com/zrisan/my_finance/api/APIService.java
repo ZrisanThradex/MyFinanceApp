@@ -3,10 +3,12 @@ package com.zrisan.my_finance.api;
 import com.zrisan.my_finance.models.Account;
 import com.zrisan.my_finance.models.AuthToken;
 import com.zrisan.my_finance.models.Category;
+import com.zrisan.my_finance.models.CategoryTotal;
 import com.zrisan.my_finance.models.LoginRequest;
 import com.zrisan.my_finance.models.Message;
 import com.zrisan.my_finance.models.NewAccount;
 import com.zrisan.my_finance.models.RegistrationRequest;
+import com.zrisan.my_finance.models.TotalBalance;
 import com.zrisan.my_finance.models.Transaction;
 import com.zrisan.my_finance.models.User;
 
@@ -39,9 +41,17 @@ public interface APIService {
     Call<Void> logout();
 
 
-    //Expenses
     @GET("account")
     Call<List<Account>> obtenerCuentas();
+
+    @GET("account/total")
+    Call<TotalBalance> obtenerTotal();
+
+    @GET("expense/all")
+    Call<List<CategoryTotal>> obtenerTotalExpenses();
+
+    @GET("income/all")
+    Call<List<CategoryTotal>> obtenerTotalIncomes();
 
     @FormUrlEncoded
     @POST("account")
