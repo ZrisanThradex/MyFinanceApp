@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blue_dianne">#274754</color>
-    <color name="jungle_green">#2a9d90</color>
-    <color name="rob_roy">#e8c468</color>
-    <color name="sandy_brown">#f4a462</color>
-    <color name="burnt_sienna">#e76e50</color>
+    <color name="blue_dianne">#004b6b</color>
+    <color name="jungle_green">#00818a</color>
+    <color name="rob_roy">#47a7bd</color>
+    <color name="sandy_brown">#fcc14a</color>
+    <color name="burnt_sienna">#f57e00</color>
     <color name="red">#b30000</color>
     <color name="green">#008000</color>
     <color name="black">#FF000000</color>

@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.zrisan.my_finance.adapters.AccountAdapter;
 import com.zrisan.my_finance.adapters.CategoryAdapter;
 import com.zrisan.my_finance.api.APIClient;
 import com.zrisan.my_finance.api.APIService;
@@ -98,12 +99,9 @@ public class FragmentAccount extends Fragment {
                     List<Account> accounts = response.body();
 
                         // Crea un adaptador para el Spinner utilizando la lista de nombres de cuentas
-                        ArrayAdapter<Account> accountAdapter = new ArrayAdapter<>(requireContext(),
-                                android.R.layout.simple_spinner_item, accounts);
-                        accountAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+                        AccountAdapter adapter = new AccountAdapter(getContext(), accounts);
                         // Establece el adaptador en el Spinner
-                        binding.accountListView.setAdapter(accountAdapter);
+                        binding.accountListView.setAdapter(adapter);
                 } else {
                     // Maneja el error de la respuesta no exitosa
                     Log.d("RESPONSE_BODY", response.toString());

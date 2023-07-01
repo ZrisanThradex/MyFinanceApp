@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@+id/swipe_refresh_layout_gasto"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_refresh_layout_gasto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
         tools:context=".ui.gastos.GastosFragment">
 
         <!-- Selector de cuentas -->
@@ -16,25 +17,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
             android:text="Cuentas"/>
 
         <Spinner
             android:id="@+id/account_spinner"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_marginTop="7dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textAccount" />
+            android:layout_below="@id/textAccount"
+            android:layout_margin="10dp"
+            android:padding="8dp"
+            android:spinnerMode="dropdown"
+            style="@style/SpinnerStyle"/>
 
         <TextView
             android:id="@+id/listGasto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
             android:layout_below="@id/account_spinner"
             android:text="Gastos de la cuenta"/>
 
@@ -42,8 +45,12 @@
         <ListView
             android:id="@+id/transactionListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/listGasto" />
+            android:layout_height="0dp"
+            android:layout_below="@id/listGasto"
+            android:layout_margin="10dp"
+            android:divider="@color/white"
+            android:dividerHeight="1dp"
+            android:layout_above="@id/add_expense_button"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_expense_button"
@@ -58,4 +65,3 @@
     </RelativeLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-

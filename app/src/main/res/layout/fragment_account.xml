@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@+id/swipe_refresh_layout_account"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_refresh_layout_account"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+ <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         tools:context=".ui.account.FragmentAccount">
 
-        <TextView
-            android:id="@+id/listAccount"
+        <!-- Cabecera -->
+        <LinearLayout
+            android:id="@+id/headerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:text="Cuentas"/>
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/accountNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre de la cuenta"
+                android:gravity="start"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Balance -->
+            <TextView
+                android:id="@+id/balanceTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Balance: $0"
+                android:gravity="end"
+                android:textSize="12sp" />
+
+            <!-- Agregar otros elementos a la cabecera si es necesario -->
+
+        </LinearLayout>
 
         <!-- Lista de gastos -->
         <ListView
             android:id="@+id/accountListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/listAccount" />
+            android:divider="@android:color/white"
+            android:dividerHeight="1dp"
+            android:layout="@layout/list_item"
+            android:padding="10dp"
+            />
 
+        <!-- Botón flotante para agregar cuenta -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_account_button"
             android:layout_width="wrap_content"
@@ -34,9 +62,8 @@
             android:layout_alignParentEnd="true"
             android:layout_margin="16dp"
             android:src="@drawable/ic_add"
-            android:contentDescription="@string/add_account_button" />
+            android:contentDescription="@string/add_account_button"
+            />
 
     </RelativeLayout>
-
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-

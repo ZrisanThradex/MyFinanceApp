@@ -31,7 +31,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingVertical="8dp" />
+                android:layout_marginHorizontal="10dp"
+                android:divider="@color/white"
+                android:dividerHeight="1dp"
+                android:paddingVertical="3dp" />
 
             <!-- TextView para la categoría de ingresos -->
             <TextView
@@ -48,7 +51,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingVertical="8dp" />
+                android:layout_marginHorizontal="10dp"
+                android:divider="@color/white"
+                android:dividerHeight="1dp"
+                android:paddingVertical="3dp" />
         </LinearLayout>
 
         <!-- Botón de agregar categoría de ingresos (derecha) -->

@@ -42,7 +42,7 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         TextView descriptionTextView = convertView.findViewById(R.id.descriptionTextView);
 
         // Asigna los valores de la transacción a los elementos de la interfaz de diseño
-        amountTextView.setText(String.valueOf(transaction.getAmount()));
+        amountTextView.setText("S/. " + String.valueOf(transaction.getAmount()));
         descriptionTextView.setText(transaction.getDescription());
 
         // Establecer el icono de la categoría según el parámetro entero

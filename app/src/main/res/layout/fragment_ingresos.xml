@@ -26,24 +26,32 @@
             android:layout_marginTop="7dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textAccount" />
+            android:layout_below="@id/textAccount"
+            android:layout_margin="10dp"
+            android:padding="8dp"
+            android:spinnerMode="dropdown"
+            style="@style/SpinnerStyle"/>
 
         <TextView
-            android:id="@+id/listGasto"
+            android:id="@+id/listIngreso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:layout_below="@id/account_spinner"
-            android:text="Gastos de la cuenta"/>
+            android:text="Gastos de la cuenta"
+            />
 
         <!-- Lista de gastos -->
         <ListView
             android:id="@+id/transactionListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/listGasto" />
+            android:layout_below="@id/listIngreso"
+            android:divider="@color/white"
+            android:dividerHeight="1dp"
+            android:layout_margin="10dp"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_income_button"

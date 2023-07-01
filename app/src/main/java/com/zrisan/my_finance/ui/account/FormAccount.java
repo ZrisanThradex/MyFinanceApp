@@ -66,18 +66,6 @@ public class FormAccount extends AppCompatActivity {
                                 // La solicitud fue exitosa
                                 NewAccount savedAccount = response.body();
                                 if (savedAccount != null) {
-                                    // Acceder a los atributos del objeto NewAccount
-                                    String name = savedAccount.getName();
-                                    double currentBalance = savedAccount.getCurrentBalance();
-                                    int userId = savedAccount.getUserId();
-                                    int id = savedAccount.getId();
-
-                                    // Hacer lo que necesites con los atributos
-                                    Log.d("TAG", "Nombre: " + name);
-                                    Log.d("TAG", "Saldo actual: " + currentBalance);
-                                    Log.d("TAG", "ID de usuario: " + userId);
-                                    Log.d("TAG", "ID de cuenta: " + id);
-
                                     Toast.makeText(getApplicationContext(), "Cuenta guardada con éxito", Toast.LENGTH_SHORT).show();
                                     txtNombre.setText("");
                                     txtBalance.setText("");
