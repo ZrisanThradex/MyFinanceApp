@@ -16,7 +16,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class APIClient {
     private static final String BASE_URL = "https://backend-app-money-production.up.railway.app/api/v1/";
     private static APIService apiService;
-    private static OkHttpClient client;
 
     public static APIService getApiService(@Nullable Context context) {
         if (apiService == null) {
@@ -49,8 +48,12 @@ public class APIClient {
         return httpClientBuilder.build();
     }
 
-    private static String getTokenFromPreferences(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences("Auth", Context.MODE_PRIVATE);
-        return preferences.getString("token", null);
+    private static String getTokenFromPreferences(@Nullable Context context) {
+        if (context != null) {
+            SharedPreferences preferences = context.getSharedPreferences("Auth", Context.MODE_PRIVATE);
+            return preferences.getString("token", null);
+        } else {
+            return null;
+        }
     }
 }

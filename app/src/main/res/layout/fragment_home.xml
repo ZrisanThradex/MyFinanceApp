@@ -30,7 +30,7 @@
                 android:id="@+id/text_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="S/. 9000"
+                android:text="No hay registros"
                 android:textSize="24sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
