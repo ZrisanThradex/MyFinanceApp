@@ -49,11 +49,12 @@ public class APIClient {
     }
 
     private static String getTokenFromPreferences(@Nullable Context context) {
-        if (context != null) {
+        if(context != null) {
             SharedPreferences preferences = context.getSharedPreferences("Auth", Context.MODE_PRIVATE);
             return preferences.getString("token", null);
         } else {
-            return null;
+            SharedPreferences preferences = context.getSharedPreferences("Auth", Context.MODE_PRIVATE);
+            return preferences.getString("token", null);
         }
     }
 }
