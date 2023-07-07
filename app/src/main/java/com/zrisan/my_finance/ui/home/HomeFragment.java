@@ -188,6 +188,7 @@ public class HomeFragment extends Fragment {
         donutChart.setCenterTextSize(20f);
         donutChart.setCenterTextColor(Color.WHITE);
         donutChart.setDrawEntryLabels(false);
+        donutChart.getDescription().setEnabled(false);
 
         Legend legend = donutChart.getLegend();
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
@@ -221,6 +222,7 @@ public class HomeFragment extends Fragment {
         donutChart2.setCenterTextSize(20f);
         donutChart2.setCenterTextColor(Color.WHITE);
         donutChart2.setDrawEntryLabels(false);
+        donutChart2.getDescription().setEnabled(false);
 
         Legend legend = donutChart2.getLegend();
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
