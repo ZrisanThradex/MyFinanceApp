@@ -24,12 +24,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
-    @GET("users/{id}")
-    Call<User> getUser(@Path("id") String userId);
 
-    // Agrega aquí otros métodos para tus endpoints de la API
-
-    //AUTH
     @FormUrlEncoded
     @POST("auth/login")
     Call<AuthToken> login(@Field("username") String username, @Field("password") String password);

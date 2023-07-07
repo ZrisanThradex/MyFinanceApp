@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                apiService = APIClient.getApiService(null);
+                apiService = APIClient.getApiService(getApplicationContext());
 
                 // Realizar la llamada a la API en un hilo de trabajo separado
                 Call<AuthToken> call = apiService.login(username, password);

@@ -8,8 +8,12 @@ import androidx.annotation.Nullable;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
@@ -30,31 +34,35 @@ public class APIClient {
         return apiService;
     }
 
-    private static OkHttpClient getOkHttpClient(@Nullable Context context) {
+    private static OkHttpClient getOkHttpClient(@Nullable final Context context) {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
 
-        httpClientBuilder.addInterceptor(chain -> {
-            Request originalRequest = chain.request();
+        if (context != null) {
+            httpClientBuilder.addInterceptor(new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request originalRequest = chain.request();
 
-            String token = getTokenFromPreferences(context);  // Obtiene el token actualizado de las preferencias
+                    String token = getTokenFromPreferences(context);  // Obtiene el token actualizado de las preferencias
 
-            Request.Builder requestBuilder = originalRequest.newBuilder()
-                    .header("Authorization", "Bearer " + token);
+                    Request.Builder requestBuilder = originalRequest.newBuilder()
+                            .header("Authorization", "Bearer " + token);
 
-            Request request = requestBuilder.build();
-            return chain.proceed(request);
-        });
+                    Request request = requestBuilder.build();
+                    return chain.proceed(request);
+                }
+            });
+        }
 
         return httpClientBuilder.build();
     }
 
     private static String getTokenFromPreferences(@Nullable Context context) {
-        if(context != null) {
+        if (context != null) {
             SharedPreferences preferences = context.getSharedPreferences("Auth", Context.MODE_PRIVATE);
             return preferences.getString("token", null);
         } else {
-            SharedPreferences preferences = context.getSharedPreferences("Auth", Context.MODE_PRIVATE);
-            return preferences.getString("token", null);
+            return null;
         }
     }
 }
