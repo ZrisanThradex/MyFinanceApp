@@ -20,7 +20,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
-    <string name="login_form_title">Login</string>
+    <string name="login_form_title">Registrate!</string>
     <string name="login_form_username">Username</string>
     <string name="login_form_password">Password</string>
     <string name="login_form_login">LOGIN</string>
