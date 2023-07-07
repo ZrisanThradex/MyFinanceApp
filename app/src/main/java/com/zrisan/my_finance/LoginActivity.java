@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences preferences = context.getSharedPreferences("Auth", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("token", token);
+                            editor.putString("user", username);
                             editor.apply();
                             // Credenciales válidas, realizar acciones adicionales
                             // Continuar con la lógica de tu aplicación o iniciar una nueva actividad
