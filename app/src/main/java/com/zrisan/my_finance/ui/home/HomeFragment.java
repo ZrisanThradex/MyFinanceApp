@@ -194,7 +194,7 @@ public class HomeFragment extends Fragment {
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         legend.setOrientation(Legend.LegendOrientation.VERTICAL);
-        legend.setTextColor(Color.WHITE);
+        legend.setTextColor(Color.BLACK);
     }
 
 
@@ -228,7 +228,7 @@ public class HomeFragment extends Fragment {
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         legend.setOrientation(Legend.LegendOrientation.VERTICAL);
-        legend.setTextColor(Color.WHITE);
+        legend.setTextColor(Color.BLACK);
     }
 
     private List<PieEntry> createPieEntries(List<CategoryTotal> category) {
