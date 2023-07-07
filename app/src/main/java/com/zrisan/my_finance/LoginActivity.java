@@ -53,8 +53,6 @@ public class LoginActivity extends AppCompatActivity {
                 LoadingDialogFragment loadingDialog = new LoadingDialogFragment();
                 loadingDialog.show(getSupportFragmentManager(), "loading_dialog");
 
-
-
                 apiService = APIClient.getApiService(getApplicationContext());
 
                 // Realizar la llamada a la API en un hilo de trabajo separado
