@@ -21,13 +21,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Seleccione una cuenta"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:id="@+id/accountData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/black" />
 
         <!-- Botón para seleccionar categoría -->
         <Button
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="Cuentas"
             android:drawableLeft="@drawable/ic_card"
-            android:drawableTint="@color/white"
+            android:drawableTint="@color/black"
             />
     </LinearLayout>
 
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Seleccione una categoría"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:id="@+id/categoryData"
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:text="Categorías"
             android:drawableLeft="@drawable/baseline_category_24"
-            android:drawableTint="@color/white"/>
+            android:drawableTint="@color/black"/>
     </LinearLayout>
 
     <!-- Añadido espacio vacío para expandir el diseño -->
